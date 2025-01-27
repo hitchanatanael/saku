@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  // Ubah ke StatelessWidget karena tidak perlu state
   const LoginScreen({super.key});
 
   @override
@@ -85,14 +84,31 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Jenis Kelamin',
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide: BorderSide.none,
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: DropdownButton<String>(
+                          hint: const Text('Jenis Kelamin'),
+                          isExpanded: true,
+                          underline: Container(), // Menghilangkan garis bawah
+                          items: const [
+                            DropdownMenuItem(
+                              value: 'L',
+                              child: Text('Laki-laki'),
+                            ),
+                            DropdownMenuItem(
+                              value: 'P',
+                              child: Text('Perempuan'),
+                            ),
+                          ],
+                          onChanged: (String? value) {
+                            // Fungsi kosong agar dropdown bisa dibuka
+                          }, // Karena static UI, bisa dibuat null
                         ),
                       ),
                     ),
