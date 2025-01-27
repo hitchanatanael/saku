@@ -114,14 +114,15 @@ class HomeScreenState extends State<HomeScreen> {
                   Card(
                     color: Colors.green,
                     child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Image.asset(
-                          'assets/images/User.png',
-                          height: 25,
-                          width: 25,
-                          color: Colors.white,
-                          fit: BoxFit.fill,
-                        )),
+                      padding: const EdgeInsets.all(8),
+                      child: Image.asset(
+                        'assets/images/User.png',
+                        height: 25,
+                        width: 25,
+                        color: Colors.white,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                   ),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,15 +148,18 @@ class HomeScreenState extends State<HomeScreen> {
                 children: [
                   const Text('Banner'),
                   SizedBox(
-                    height: 100,
+                    height: 75,
                     width: double.infinity,
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      child: Image.asset(
-                        'assets/images/banner.png',
-                        fit: BoxFit.fill,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.asset(
+                          'assets/images/banner.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   )
@@ -182,112 +186,183 @@ class HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            child: Card(
-                              child: Container(
-                                width: 100,
-                                padding: const EdgeInsets.all(10),
-                                child: const Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.receipt,
-                                      color: Colors.pink,
-                                      size: 40,
+                            child: Column(
+                              children: [
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  color: Color(0xFFe3f2fe),
+                                  child: Container(
+                                    width: 60,
+                                    padding: const EdgeInsets.all(2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(2),
+                                          child: Image.asset(
+                                            'assets/images/invoice.png',
+                                            height: 55,
+                                            width: 50,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(height: 5),
-                                    Text('Tiket',
-                                        style: TextStyle(fontSize: 12)),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(height: 5),
+                                const Text(
+                                  'Biaya Pendidikan',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 25),
                           GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(context, '/tagihan');
                             },
-                            child: Card(
-                              child: Container(
-                                width: 100,
-                                padding: const EdgeInsets.all(10),
-                                child: const Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.receipt_long,
-                                      color: Colors.purple,
-                                      size: 40,
+                            child: Column(
+                              children: [
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  color: Color(0xFFe3f2fe),
+                                  child: Container(
+                                    width: 60,
+                                    padding: const EdgeInsets.all(2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(2),
+                                          child: Image.asset(
+                                            'assets/images/smartphone.png',
+                                            height: 55,
+                                            width: 48,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(height: 5),
-                                    Text('Tagihan',
-                                        style: TextStyle(fontSize: 12)),
-                                  ],
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                const Text(
+                                  'Cashless',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 25),
+                          Column(
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                color: Color(0xFFe3f2fe),
+                                child: Container(
+                                  width: 60,
+                                  padding: const EdgeInsets.all(2),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(2),
+                                        child: Image.asset(
+                                          'assets/images/calendar.png',
+                                          height: 55,
+                                          width: 50,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Card(
-                            child: Container(
-                              width: 100,
-                              padding: const EdgeInsets.all(10),
-                              child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.calendar_month,
-                                    color: Colors.blue,
-                                    size: 40,
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text('Jadwal',
-                                      style: TextStyle(fontSize: 12)),
-                                ],
+                              const SizedBox(height: 5),
+                              const Text(
+                                'Absensi',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                          const SizedBox(width: 10),
-                          Card(
-                            child: Container(
-                              width: 100,
-                              padding: const EdgeInsets.all(10),
-                              child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.calendar_month,
-                                    color: Colors.blue,
-                                    size: 40,
+                          const SizedBox(width: 25),
+                          Column(
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                color: Color(0xFFe3f2fe),
+                                child: Container(
+                                  width: 60,
+                                  padding: const EdgeInsets.all(2),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(2),
+                                        child: Image.asset(
+                                          'assets/images/exam-time.png',
+                                          height: 55,
+                                          width: 50,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(height: 5),
-                                  Text('Jadwal',
-                                      style: TextStyle(fontSize: 12)),
-                                ],
+                                ),
                               ),
-                            ),
+                              const SizedBox(height: 5),
+                              const Text(
+                                'UTS / UAS',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 10),
-                          Card(
-                            child: Container(
-                              width: 100,
-                              padding: const EdgeInsets.all(10),
-                              child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.calendar_month,
-                                    color: Colors.blue,
-                                    size: 40,
+                          const SizedBox(width: 25),
+                          Column(
+                            children: [
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                color: Color(0xFFe3f2fe),
+                                child: Container(
+                                  width: 60,
+                                  padding: const EdgeInsets.all(2),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(2),
+                                        child: Image.asset(
+                                          'assets/images/setting.png',
+                                          height: 55,
+                                          width: 50,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(height: 5),
-                                  Text('Jadwal',
-                                      style: TextStyle(fontSize: 12)),
-                                ],
+                                ),
                               ),
-                            ),
+                              const SizedBox(height: 5),
+                              const Text(
+                                'Pengaturan',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 10),
                         ],
                       ),
                     ),

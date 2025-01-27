@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:saku/routes/app_routes.dart';
-// import 'package:logger/logger.dart';
-
-// final logger = Logger();
 
 void main() {
   try {
     runApp(const MyApp());
   } catch (e) {
-    print('Error in main : $e');
+    // print('Error in main : $e');
   }
 }
 
@@ -22,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: AppRoutes.routes,
     );
   }
