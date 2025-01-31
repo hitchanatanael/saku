@@ -1,7 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  // Controllers for text fields
+  final TextEditingController _nikController = TextEditingController();
+  final TextEditingController _namaLengkapController = TextEditingController();
+  final TextEditingController _whatsappController = TextEditingController();
+  final TextEditingController _alamatController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // Selected gender
+  String? _selectedGender;
+
+  @override
+  void dispose() {
+    // Clean up controllers when widget is disposed
+    _nikController.dispose();
+    _namaLengkapController.dispose();
+    _whatsappController.dispose();
+    _alamatController.dispose();
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  // Method to handle form submission
+  void _handleSubmit() {
+    // Validate all fields are filled
+    if (_nikController.text.isEmpty ||
+        _namaLengkapController.text.isEmpty ||
+        _selectedGender == null ||
+        _whatsappController.text.isEmpty ||
+        _alamatController.text.isEmpty ||
+        _usernameController.text.isEmpty ||
+        _passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Mohon lengkapi semua field'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Here you can add your registration logic
+    final userData = {
+      'nik': _nikController.text,
+      'nama_lengkap': _namaLengkapController.text,
+      'jenis_kelamin': _selectedGender,
+      'whatsapp': _whatsappController.text,
+      'alamat': _alamatController.text,
+      'username': _usernameController.text,
+      'password': _passwordController.text,
+    };
+
+    // Print data for debugging (remove in production)
+    print(userData);
+
+    // Navigate to home or show success message
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Pendaftaran berhasil'),
+        backgroundColor: Colors.green,
+      ),
+    );
+    Navigator.pushNamed(context, '/');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +96,12 @@ class LoginScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              // Image banner
               Image.asset(
                 'assets/images/tagihan.png',
                 height: 150,
                 fit: BoxFit.contain,
               ),
               const SizedBox(height: 20),
-
-              // Form container
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -59,9 +128,15 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
 
-                    // TextField statis
-                    const TextField(
-                      decoration: InputDecoration(
+                    // NIK TextField with max length
+                    TextField(
+                      controller: _nikController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(16),
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      decoration: const InputDecoration(
                         hintText: 'NIK',
                         filled: true,
                         fillColor: Colors.white,
@@ -72,8 +147,11 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const TextField(
-                      decoration: InputDecoration(
+
+                    // Nama Lengkap TextField
+                    TextField(
+                      controller: _namaLengkapController,
+                      decoration: const InputDecoration(
                         hintText: 'Nama Lengkap',
                         filled: true,
                         fillColor: Colors.white,
@@ -84,6 +162,8 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
+
+                    // Jenis Kelamin Dropdown
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -95,7 +175,8 @@ class LoginScreen extends StatelessWidget {
                         child: DropdownButton<String>(
                           hint: const Text('Jenis Kelamin'),
                           isExpanded: true,
-                          underline: Container(), // Menghilangkan garis bawah
+                          value: _selectedGender,
+                          underline: Container(),
                           items: const [
                             DropdownMenuItem(
                               value: 'L',
@@ -107,14 +188,20 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ],
                           onChanged: (String? value) {
-                            // Fungsi kosong agar dropdown bisa dibuka
-                          }, // Karena static UI, bisa dibuat null
+                            setState(() {
+                              _selectedGender = value;
+                            });
+                          },
                         ),
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const TextField(
-                      decoration: InputDecoration(
+
+                    // No Whatsapp TextField
+                    TextField(
+                      controller: _whatsappController,
+                      keyboardType: TextInputType.phone,
+                      decoration: const InputDecoration(
                         hintText: 'No Whatsapp',
                         filled: true,
                         fillColor: Colors.white,
@@ -125,8 +212,11 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const TextField(
-                      decoration: InputDecoration(
+
+                    // Alamat TextField
+                    TextField(
+                      controller: _alamatController,
+                      decoration: const InputDecoration(
                         hintText: 'Alamat Lengkap',
                         filled: true,
                         fillColor: Colors.white,
@@ -137,8 +227,11 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const TextField(
-                      decoration: InputDecoration(
+
+                    // Username TextField
+                    TextField(
+                      controller: _usernameController,
+                      decoration: const InputDecoration(
                         hintText: 'Nama Pengguna',
                         filled: true,
                         fillColor: Colors.white,
@@ -149,8 +242,12 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const TextField(
-                      decoration: InputDecoration(
+
+                    // Password TextField
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(
                         hintText: 'Buat Kata Sandi',
                         filled: true,
                         fillColor: Colors.white,
@@ -160,12 +257,11 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                        height: 20), // Beri jarak dengan field password
+                    const SizedBox(height: 20),
+
+                    // Submit Button
                     GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/');
-                      },
+                      onTap: _handleSubmit,
                       child: Container(
                         width: double.infinity,
                         height: 45,
