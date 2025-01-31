@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,12 +10,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // Controllers for text fields
   final TextEditingController _nikController = TextEditingController();
   final TextEditingController _namaLengkapController = TextEditingController();
   final TextEditingController _whatsappController = TextEditingController();
   final TextEditingController _alamatController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  // Selected gender
   String? _selectedGender;
 
   @override
@@ -28,7 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  // Method to handle form submission
   void _handleSubmit() {
+    // Validate all fields are filled
     if (_nikController.text.isEmpty ||
         _namaLengkapController.text.isEmpty ||
         _selectedGender == null ||
@@ -36,15 +42,21 @@ class _LoginScreenState extends State<LoginScreen> {
         _alamatController.text.isEmpty ||
         _usernameController.text.isEmpty ||
         _passwordController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Mohon lengkapi semua field'),
-          backgroundColor: Colors.red,
-        ),
+      Get.snackbar(
+        'Error', // title
+        'Mohon lengkapi semua field', // message
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        icon: const Icon(Icons.error, color: Colors.white),
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(15),
+        borderRadius: 8,
       );
       return;
     }
 
+    // Here you can add your registration logic
     final userData = {
       'nik': _nikController.text,
       'nama_lengkap': _namaLengkapController.text,
@@ -55,15 +67,23 @@ class _LoginScreenState extends State<LoginScreen> {
       'password': _passwordController.text,
     };
 
+    // Print data for debugging (remove in production)
     print(userData);
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Pendaftaran berhasil'),
-        backgroundColor: Colors.green,
-      ),
+    // Show success message and navigate
+    Get.snackbar(
+      'Sukses', // title
+      'Pendaftaran berhasil', // message
+      backgroundColor: Colors.green,
+      colorText: Colors.white,
+      icon: const Icon(Icons.check_circle, color: Colors.white),
+      snackPosition: SnackPosition.TOP,
+      duration: const Duration(seconds: 3),
+      margin: const EdgeInsets.all(15),
+      borderRadius: 8,
     );
-    Navigator.pushNamed(context, '/');
+
+    Get.offNamed('/'); // Using Get navigation instead of Navigator
   }
 
   @override
@@ -75,7 +95,8 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () =>
+              Get.back(), // Using Get.back() instead of Navigator.pop()
         ),
         title: const Text(
           'Daftar Akun',

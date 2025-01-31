@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:saku/routes/app_routes.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
