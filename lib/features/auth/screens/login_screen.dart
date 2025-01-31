@@ -9,20 +9,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Controllers for text fields
   final TextEditingController _nikController = TextEditingController();
   final TextEditingController _namaLengkapController = TextEditingController();
   final TextEditingController _whatsappController = TextEditingController();
   final TextEditingController _alamatController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  // Selected gender
   String? _selectedGender;
 
   @override
   void dispose() {
-    // Clean up controllers when widget is disposed
     _nikController.dispose();
     _namaLengkapController.dispose();
     _whatsappController.dispose();
@@ -32,9 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // Method to handle form submission
   void _handleSubmit() {
-    // Validate all fields are filled
     if (_nikController.text.isEmpty ||
         _namaLengkapController.text.isEmpty ||
         _selectedGender == null ||
@@ -51,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    // Here you can add your registration logic
     final userData = {
       'nik': _nikController.text,
       'nama_lengkap': _namaLengkapController.text,
@@ -62,10 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
       'password': _passwordController.text,
     };
 
-    // Print data for debugging (remove in production)
     print(userData);
 
-    // Navigate to home or show success message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Pendaftaran berhasil'),
@@ -127,8 +118,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-
-                    // NIK TextField with max length
                     TextField(
                       controller: _nikController,
                       keyboardType: TextInputType.number,
@@ -147,8 +136,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                    // Nama Lengkap TextField
                     TextField(
                       controller: _namaLengkapController,
                       decoration: const InputDecoration(
@@ -162,8 +149,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                    // Jenis Kelamin Dropdown
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -196,8 +181,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                    // No Whatsapp TextField
                     TextField(
                       controller: _whatsappController,
                       keyboardType: TextInputType.phone,
@@ -212,8 +195,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                    // Alamat TextField
                     TextField(
                       controller: _alamatController,
                       decoration: const InputDecoration(
@@ -227,8 +208,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                    // Username TextField
                     TextField(
                       controller: _usernameController,
                       decoration: const InputDecoration(
@@ -242,8 +221,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-
-                    // Password TextField
                     TextField(
                       controller: _passwordController,
                       obscureText: true,
@@ -258,8 +235,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-
-                    // Submit Button
                     GestureDetector(
                       onTap: _handleSubmit,
                       child: Container(
