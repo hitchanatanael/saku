@@ -47,6 +47,15 @@ Future<void> main() async {
     // Request permission
     final messaging = FirebaseMessaging.instance;
 
+     // Dapatkan APNS Token
+    String? apnsToken = await messaging.getAPNSToken();
+    print("APNS Token: $apnsToken");
+
+    if (apnsToken == null) {
+      print(
+          "APNS token belum tersedia. Pastikan Anda mengaktifkan Push Notifications.");
+    }
+
     final settings = await messaging.requestPermission(
       alert: true,
       announcement: false,
