@@ -1,21 +1,38 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:saku/features/home/widgets/siswa_widget.dart';
 import 'package:saku/features/tagihan/controllers/tagihan_controller.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:get/get.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:saku/main.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  HomeScreenState createState() => HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   final TagihanController _controller = TagihanController();
+  late StreamSubscription<RemoteMessage> _messageSubscription;
 
   @override
   void initState() {
     super.initState();
+    _messageSubscription = messageStreamController.listen((message) {
+      Get.snackbar(
+        message.notification?.title ?? 'New Message',
+        message.notification?.body ?? 'You have a new message',
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _messageSubscription.cancel();
+    super.dispose();
   }
 
   FutureBuilder<List<dynamic>> viewApi() {

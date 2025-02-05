@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "737814846116",
+    "project_id": "oncard-34afb",
+    "storage_bucket": "oncard-34afb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737814846116:android:7a14e4c43be597b4222431",
+        "android_client_info": {
+          "package_name": "com.example.saku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2tASYFuK1miVt_53Qcq989WloyQphDhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
