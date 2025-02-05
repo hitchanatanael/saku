@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042485950826",
+    "project_id": "oncard-ad17b",
+    "storage_bucket": "oncard-ad17b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042485950826:android:81f45df0d9c8b1af508d13",
+        "android_client_info": {
+          "package_name": "com.example.saku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNing4QKrq64_zGIA1ZDNicKrTjJectcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

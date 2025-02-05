@@ -26,3 +26,14 @@ dart pub global activate fvm
 
 fvm install 3.27.2
 fvm use 3.27.2
+
+
+# Firebase
+https://firebase.google.com/codelabs/firebase-fcm-flutter?hl=id#2
+
+Platform  Firebase App Id
+web       1:1042485950826:web:b466cfe984f5977f508d13
+android   1:1042485950826:android:81f45df0d9c8b1af508d13
+ios       1:1042485950826:ios:db39ad51a263133d508d13
+macos     1:1042485950826:ios:db39ad51a263133d508d13
+windows   1:1042485950826:web:24c96b044a4498be508d13
