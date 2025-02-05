@@ -41,46 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBCtR8-pJFMBITzjaRfwRRIEOlR_lt1HHI',
-    appId: '1:1042485950826:web:b466cfe984f5977f508d13',
-    messagingSenderId: '1042485950826',
-    projectId: 'oncard-ad17b',
-    authDomain: 'oncard-ad17b.firebaseapp.com',
-    storageBucket: 'oncard-ad17b.firebasestorage.app',
+    apiKey: 'AIzaSyDhBwhwi8Fk0B-YVG5yEKaO07M5y555ACk',
+    appId: '1:737814846116:web:2fda3e26963745de222431',
+    messagingSenderId: '737814846116',
+    projectId: 'oncard-34afb',
+    authDomain: 'oncard-34afb.firebaseapp.com',
+    storageBucket: 'oncard-34afb.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDNing4QKrq64_zGIA1ZDNicKrTjJectcY',
-    appId: '1:1042485950826:android:81f45df0d9c8b1af508d13',
-    messagingSenderId: '1042485950826',
-    projectId: 'oncard-ad17b',
-    storageBucket: 'oncard-ad17b.firebasestorage.app',
+    apiKey: 'AIzaSyA2tASYFuK1miVt_53Qcq989WloyQphDhQ',
+    appId: '1:737814846116:android:7a14e4c43be597b4222431',
+    messagingSenderId: '737814846116',
+    projectId: 'oncard-34afb',
+    storageBucket: 'oncard-34afb.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAnU5HNhAHi68WofH1LDnimA4y1rHJz-Tk',
-    appId: '1:1042485950826:ios:db39ad51a263133d508d13',
-    messagingSenderId: '1042485950826',
-    projectId: 'oncard-ad17b',
-    storageBucket: 'oncard-ad17b.firebasestorage.app',
+    apiKey: 'AIzaSyAXwWqIBUHfsxLkIXxFeGl9AmU4RhDkRJk',
+    appId: '1:737814846116:ios:8cafc8dfdcf7e070222431',
+    messagingSenderId: '737814846116',
+    projectId: 'oncard-34afb',
+    storageBucket: 'oncard-34afb.firebasestorage.app',
     iosBundleId: 'com.example.saku',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAnU5HNhAHi68WofH1LDnimA4y1rHJz-Tk',
-    appId: '1:1042485950826:ios:db39ad51a263133d508d13',
-    messagingSenderId: '1042485950826',
-    projectId: 'oncard-ad17b',
-    storageBucket: 'oncard-ad17b.firebasestorage.app',
+    apiKey: 'AIzaSyAXwWqIBUHfsxLkIXxFeGl9AmU4RhDkRJk',
+    appId: '1:737814846116:ios:8cafc8dfdcf7e070222431',
+    messagingSenderId: '737814846116',
+    projectId: 'oncard-34afb',
+    storageBucket: 'oncard-34afb.firebasestorage.app',
     iosBundleId: 'com.example.saku',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBCtR8-pJFMBITzjaRfwRRIEOlR_lt1HHI',
-    appId: '1:1042485950826:web:24c96b044a4498be508d13',
-    messagingSenderId: '1042485950826',
-    projectId: 'oncard-ad17b',
-    authDomain: 'oncard-ad17b.firebaseapp.com',
-    storageBucket: 'oncard-ad17b.firebasestorage.app',
+    apiKey: 'AIzaSyDhBwhwi8Fk0B-YVG5yEKaO07M5y555ACk',
+    appId: '1:737814846116:web:b8deefa6c5474c96222431',
+    messagingSenderId: '737814846116',
+    projectId: 'oncard-34afb',
+    authDomain: 'oncard-34afb.firebaseapp.com',
+    storageBucket: 'oncard-34afb.firebasestorage.app',
   );
+
 }
