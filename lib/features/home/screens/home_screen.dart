@@ -103,13 +103,19 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {},
       ),
       title: const Text('Home', style: TextStyle(color: Colors.white)),
-      actions: const [
+      actions: [
         Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Icon(
+          padding: EdgeInsets.only(right: 16.0),
+          child: IconButton(
+            icon: Icon(
               Icons.person,
               color: Colors.white,
-            )),
+            ),
+            onPressed: () {
+              Get.toNamed('/profile');
+            },
+          ),
+        ),
       ],
     );
   }
