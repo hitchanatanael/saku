@@ -10,7 +10,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Controllers for text fields
   final TextEditingController _nikController = TextEditingController();
   final TextEditingController _namaLengkapController = TextEditingController();
   final TextEditingController _whatsappController = TextEditingController();
@@ -18,7 +17,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Selected gender
   String? _selectedGender;
 
   @override
@@ -32,9 +30,15 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // Method to handle form submission
+  String formatWhatsAppNumber(String number) {
+    if (number.startsWith('0')) {
+      return '+62${number.substring(1)}';
+    } else {
+      return '+62$number';
+    }
+  }
+
   void _handleSubmit() {
-    // Validate all fields are filled
     if (_nikController.text.isEmpty ||
         _namaLengkapController.text.isEmpty ||
         _selectedGender == null ||
@@ -43,8 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
         _usernameController.text.isEmpty ||
         _passwordController.text.isEmpty) {
       Get.snackbar(
-        'Error', // title
-        'Mohon lengkapi semua field', // message
+        'Error',
+        'Mohon lengkapi semua field',
         backgroundColor: Colors.red,
         colorText: Colors.white,
         icon: const Icon(Icons.error, color: Colors.white),
@@ -56,24 +60,23 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    // Here you can add your registration logic
+    String formattedWhatsApp = formatWhatsAppNumber(_whatsappController.text);
+
     final userData = {
       'nik': _nikController.text,
       'nama_lengkap': _namaLengkapController.text,
       'jenis_kelamin': _selectedGender,
-      'whatsapp': _whatsappController.text,
+      'whatsapp': formattedWhatsApp,
       'alamat': _alamatController.text,
       'username': _usernameController.text,
       'password': _passwordController.text,
     };
 
-    // Print data for debugging (remove in production)
     print(userData);
 
-    // Show success message and navigate
     Get.snackbar(
-      'Sukses', // title
-      'Pendaftaran berhasil', // message
+      'Sukses',
+      'Pendaftaran berhasil',
       backgroundColor: Colors.green,
       colorText: Colors.white,
       icon: const Icon(Icons.check_circle, color: Colors.white),
@@ -83,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
       borderRadius: 8,
     );
 
-    Get.offNamed('/'); // Using Get navigation instead of Navigator
+    Get.offNamed('/');
   }
 
   @override
@@ -95,8 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () =>
-              Get.back(), // Using Get.back() instead of Navigator.pop()
+          onPressed: () => Get.back(),
         ),
         title: const Text(
           'Daftar Akun',
@@ -204,6 +206,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 15),
                     TextField(
                       controller: _whatsappController,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(12),
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
                       keyboardType: TextInputType.phone,
                       decoration: const InputDecoration(
                         hintText: 'No Whatsapp',
@@ -231,6 +237,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 15),
                     TextField(
                       controller: _usernameController,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(RegExp(r'\s'))
+                      ],
                       decoration: const InputDecoration(
                         hintText: 'Nama Pengguna',
                         filled: true,
