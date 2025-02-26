@@ -41,6 +41,7 @@ dependencies:
     firebase_messaging: ^15.2.1
     permission_handler: ^11.0.1
     rxdart: ^0.28.0
+    intl: ^0.18.1
 
 dev_dependencies:
     flutter_test:

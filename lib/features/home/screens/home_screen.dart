@@ -213,7 +213,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
                                   color: Color(0xFFe3f2fe),
                                   child: Container(
                                     width: 60,
@@ -285,38 +286,44 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           const SizedBox(width: 25),
-                          Column(
-                            children: [
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5)),
-                                color: Color(0xFFe3f2fe),
-                                child: Container(
-                                  width: 60,
-                                  padding: const EdgeInsets.all(2),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(2),
-                                        child: Image.asset(
-                                          'assets/images/calendar.png',
-                                          height: 55,
-                                          width: 50,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/transaksi_detail');
+                            },
+                            child: Column(
+                              children: [
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  color: Color(0xFFe3f2fe),
+                                  child: Container(
+                                    width: 60,
+                                    padding: const EdgeInsets.all(2),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.all(2),
+                                          child: Image.asset(
+                                            'assets/images/calendar.png',
+                                            height: 55,
+                                            width: 48,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 5),
-                              const Text(
-                                'Absensi',
-                                style: TextStyle(
-                                  fontSize: 10,
+                                const SizedBox(height: 5),
+                                const Text(
+                                  'Absensi',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           const SizedBox(width: 25),
                           Column(
